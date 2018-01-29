@@ -4,7 +4,11 @@
 <head>
 
 <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+
+<link rel='stylesheet' type='text/css' href='style.css'>
+
 <script type='text/javascript' src='http://code.jquery.com/jquery-latest.min.js'></script>
+
 <title>Standings Converter</title>
 
 </head>
@@ -13,12 +17,31 @@
 
 <h1>Standings Converter</h1>
 
-<div id='standings_table'>
-	<div id='east'></div>
-	<div id='west'></div>
-</div>
+<h3 id='last_updated'></h3>
 
-<script type='text/javascript' src='parse_conf_data.js'></script>
+<h2 id='central_title'>Central</h2>
+<table id='central'>
+    <caption>Central</caption>
+</table>
+
+<h2 id='north_atlantic_title'>North_Atlantic</h2>
+<table id='north_atlantic'>
+
+</table>
+
+<h2 id='pacific_title'>Pacific</h2>
+<table id='pacific'>
+
+</table>
+
+<h2 id='southeast_title'>Southeast</h2>
+<table id='southeast'>
+
+</table>
+
+<script type='text/javascript' src='parse_data.js'></script>
+<script type='text/javascript' src='converter.js'></script>
+<script type='text/javascript' src='display_standings.js'></script>
 
 </body>
 
