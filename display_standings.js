@@ -8,7 +8,7 @@ function displayStanding(standings){
 
         conf = conferences[i];
         conf_table = document.getElementById(conf);
-        team_span = '3';
+        team_span = '4';
         name_span = '2';
 
         var table_head = '<tr>';
@@ -26,7 +26,13 @@ function displayStanding(standings){
 
             var team = standings[conf][j];
 
-            var table_row = '<tr>';
+            if (j === 4){
+                var table_row = '<tr class="top_border">';
+            }
+            else {
+                var table_row = '<tr>';
+            }
+            table_row += '<td>' + (j+1) + '</td>';
             table_row += '<td><img src="logos/' +
                             team.team_id + '.png"></td>';
             table_row += '<td colspan="' + name_span +
@@ -47,7 +53,7 @@ function displayStanding(standings){
 
     last_update = document.getElementById('last_updated');
     last_text = 'Last updated on ' + last_updated.date +
-                    ' on ' + last_updated.time;
+                    ' at ' + last_updated.time;
     last_update.innerHTML = last_text
 
     return;
