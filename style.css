@@ -41,21 +41,36 @@ a button:hover {
 }
 
 #map {
-    float: right;
+    /*float: right;*/
     padding-left: 0;
     margin-left: 0;
     max-height: 50%;
     max-width: 60%;
 }
 
+div {
+    text-align: center;
+}
+
+#caption {
+    color: white;
+    display: block;
+    width: 40%;
+    text-align: left;
+    padding-left: 5%;
+    padding-right: 0px;
+    margin-right: 0px;
+}
 #explanation {
     color: white;
-    width: 30%;
+    float: right;
+    width: 40%;
     text-align: left;
-    float: left;
-    padding-left: 2%;
-    padding-right: 0;
-    margin-right: 0;
+    padding-right: 10%;
+}
+#schedule {
+    width: 600px;
+    height: 900px;
 }
 
 .conf_title {
