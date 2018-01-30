@@ -39,7 +39,7 @@ function displayStanding(standings){
                             '" class="team_name">' + team.name + '</td>';
             table_row += '<td>' + team.win + '</td>';
             table_row += '<td>' + team.loss + '</td>';
-            table_row += '<td>' + team.win_percent.toFixed(3) + '</td>';
+            table_row += '<td>' + team.win_percent.toFixed(4) + '</td>';
             table_row += '<td>' + team.games_behind + '</td>';
             table_row += '<td>' + team.last_ten_win + '-' +
                                     team.last_ten_loss + '</td>';
