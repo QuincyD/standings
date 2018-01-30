@@ -2,23 +2,53 @@
 function displayStanding(standings){
 
     var conferences = ['central', 'north_atlantic', 'pacific', 'southeast'];
+    var last_updated = parseLastUpdated();
 
     for (var i = 0; i < conferences.length; i++){
 
         conf = conferences[i];
         conf_table = document.getElementById(conf);
+        team_span = '3';
+        name_span = '2';
 
-        table_head = '<tr>';
-        table_head += '<th>Team</th>';
-        table_head += '<th>Win</th>';
-        table_head += '<th>Loss</th>';
-        table_head += '<th>Games Behind</th>';
-        table_head += '<th>Last Ten</th>';
+        var table_head = '<tr>';
+        table_head += '<th colspan="' + team_span + '">Team</th>';
+        table_head += '<th>W</th>';
+        table_head += '<th>L</th>';
+        table_head += '<th>Win%</th>';
+        table_head += '<th>GB</th>';
+        table_head += '<th>L10</th>';
         table_head += '</tr>';
 
         conf_table.innerHTML = table_head;
+
+        for (var j = 0; j < standings[conf].length; j++) {
+
+            var team = standings[conf][j];
+
+            var table_row = '<tr>';
+            table_row += '<td><img src="logos/' +
+                            team.team_id + '.png"></td>';
+            table_row += '<td colspan="' + name_span +
+                            '" class="team_name">' + team.name + '</td>';
+            table_row += '<td>' + team.win + '</td>';
+            table_row += '<td>' + team.loss + '</td>';
+            table_row += '<td>' + team.win_percent.toFixed(3) + '</td>';
+            table_row += '<td>' + team.games_behind + '</td>';
+            table_row += '<td>' + team.last_ten_win + '-' +
+                                    team.last_ten_loss + '</td>';
+            table_row += '</tr>';
         
+            conf_table.innerHTML += table_row;
+
+        }
+
     }
+
+    last_update = document.getElementById('last_updated');
+    last_text = 'Last updated on ' + last_updated.date +
+                    ' on ' + last_updated.time;
+    last_update.innerHTML = last_text
 
     return;
 }
