@@ -23,25 +23,13 @@ function convertStandings(standings_obj, new_confs){
 
     }
 
-    /*
-    var central = new_standings['central'];
-    var north_atlantic = new_standings['north_atlantic'] ;
-    var pacific = new_standings['pacific'];
-    var southeast = new_standings['southeast'];
-
-    new_standings['central'] = central;
-    new_standings['north_atlantic'] = north_atlantic;
-    new_standings['pacific'] = pacific;
-    new_standings['southeast'] = southeast;
-    */
-
     return new_standings;
 }
 
 function comparison(team1, team2) {
 
     if(team1.win_percent < team2.win_percent){
-        return -1;
+        return 1;
     }
 
     if(team1.win_percent > team2.win_percent){
