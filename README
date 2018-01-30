@@ -1,9 +1,16 @@
 # standings
 A JavaScript driven web page to display possible NBA standings
-based on converted conferences.
+based on converted conferences. Online at: www.convertNBA.tk
 
-index.html: start here
+To use locally, simply pull and visit index.html
 
-get_standings.py: run to update standings after official NBA games
+Run get_standings.py to update standings after official NBA games
 
-new_confs.py: run to yield the conversions json file, new_confs.json 
+Run new_confs.py to yield the conversions json file, new_confs.json
+
+To adjust to other conference configuration, change new_confs.py,
+the tables in index.html and adjust the conferences in converter.js
+and displayStandings.js
+
+TODO: Once new_confs.json is changed, automatically adjust page to
+display the desired standings for the conversions.
