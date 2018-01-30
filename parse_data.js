@@ -113,6 +113,25 @@ function parseNewConfs() {
 
 }
 
+function parseLastUpdated(){
+
+    var last_updated;
+    
+    $.ajax({
+
+        url: 'last_updated.json',
+        async: false,
+        dataType: 'json',
+        success: function(data){
+    
+    	    last_updated = data;
+        }
+    });
+
+    return last_updated;
+
+}
+
 /*
 teams_obj = {};
 standings_obj = {};
