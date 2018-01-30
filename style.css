@@ -25,10 +25,27 @@ body {
     text-align: center;
 }
 
+a button {
+    border: 3px solid blue;
+    font-size: 100%;
+    font-weight: bold;
+    padding: 0.25% 1.5%;
+    background-color: black;
+    color: red;
+}
+
+a button:hover {
+    border: 3px solid green;
+    background-color: black;
+    color: orange;
+}
+
 #map {
     float: right;
     padding-left: 0;
     margin-left: 0;
+    max-height: 50%;
+    max-width: 60%;
 }
 
 #explanation {
