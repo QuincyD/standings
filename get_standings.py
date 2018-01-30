@@ -14,52 +14,55 @@ import re
 from datetime import datetime
 
 '''
-EFFECTS:	Scans the json_url url and saves its contents
-			to file output_filename
+EFFECTS:    Scans the json_url url and saves its contents
+            to file output_filename
 '''
 def getJSON(json_url, output_filename):
-	
-	session = requests.Session()
-	try:
-		response = session.get(json_url, timeout=10)
-	except:
-		return
+    
+    session = requests.Session()
+    try:
+        response = session.get(json_url, timeout=10)
+    except:
+        return
 
-	json_data = json.loads(response.text.encode('UTF-8').decode('ascii', 'ignore'))
-	with open(output_filename, 'w') as json_file:
-		json.dump(json_data, json_file)
+    json_data = json.loads(response.text.encode('UTF-8').decode('ascii', 'ignore'))
+    with open(output_filename, 'w') as json_file:
+        json.dump(json_data, json_file)
 
 
 '''
-EFFECTS:	Adds the date and time to a dict and saves it to
-			json file output_filename
+EFFECTS:    Adds the date and time to a dict and saves it to
+            json file output_filename
 '''
 def getTime(output_filename='last_updated.json'):
 
-	time_str = str(datetime.now())
+    time_str = str(datetime.now())
 
-	year = time_str[:4]
-	month = time_str[5:7]
-	day = time_str[8:10]
-	date = month + '/' + day + '/' + year
+    year = time_str[:4]
+    month = time_str[5:7]
+    day = time_str[8:10]
+    date = month + '/' + day + '/' + year
 
-	hour = int(time_str[11:13])
-	am_pm = 'am'
-	if (hour >= 12):
-		hour -= 12
-		hour = str(hour)
-		am_pm = 'pm'
-	minute = time_str[14:16]
-	time = hour + ':' + minute + ' ' + am_pm 
+    hour = int(time_str[11:13])
+    if(hour >= 12):
+        hour -= 12
+        hour = str(hour)
+        am_pm = 'pm'
+    else:
+        hour = str(hour)
+        am_pm = 'am'
 
-	time_dict = {'date':date, 'time':time}
+    minute = time_str[14:16]
+    time = hour + ':' + minute + ' ' + am_pm 
 
-	with open(output_filename, 'w') as json_file:
-		json.dump(time_dict, json_file)
+    time_dict = {'date':date, 'time':time}
+
+    with open(output_filename, 'w') as json_file:
+        json.dump(time_dict, json_file)
 
 
 if __name__ == '__main__':
 
-	getJSON('https://data.nba.net/prod/v1/2017/teams.json', 'teams.json')
-	getJSON('https://data.nba.net/prod/v1/current/standings_conference.json', 'standings.json')
-	getTime()
+    getJSON('https://data.nba.net/prod/v1/2017/teams.json', 'teams.json')
+    getJSON('https://data.nba.net/prod/v1/current/standings_conference.json', 'standings.json')
+    getTime()
