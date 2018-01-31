@@ -1,28 +1,21 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+<head id='head'>
 
 <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
 
-<link rel='stylesheet' type='text/css' href='style.css'>
-
 <script type='text/javascript' src='http://code.jquery.com/jquery-latest.min.js'></script>
 
-<title>Converted Standings</title>
-<link href="logos/nba_add.png" rel="icon" type="image/x-icon" />
+<link rel='stylesheet' type='text/css' href='css/style.css'>
+<link rel='stylesheet' type='text/css' href='css/index.css'>
 
 </head>
 
 <body>
 
-<div id='img_and_title'>
-    <img class='in_line' src='logos/nba_add.png'>
-    <h1 class='in_line'>NBA Converted Standings</h1>
-</div>
-
-<a href="map.html"><button>Details</button></a>
-<a href="about.html"><button>About</button></a>
+<div id='page_header'></div>
+<div id='index_nav'></div>
+<script type='text/javascript' src='js/header.js'></script>
 
 <h2 id='central_title' class='conf_title'>Central Conference</h2>
 <table id='central'></table>
@@ -38,9 +31,9 @@
 
 <h3 id='last_updated'></h3>
 
-<script type='text/javascript' src='parse_data.js'></script>
-<script type='text/javascript' src='converter.js'></script>
-<script type='text/javascript' src='display_standings.js'></script>
+<script type='text/javascript' src='js/parse_data.js'></script>
+<script type='text/javascript' src='js/converter.js'></script>
+<script type='text/javascript' src='js/display_standings.js'></script>
 
 </body>
 

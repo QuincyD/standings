@@ -1,0 +1,44 @@
+body {
+    background-color: #222;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+}
+
+.line {
+    display: inline-block;
+}
+
+#page_header {
+    margin: 0%;
+    padding: 0%;
+}
+
+#page_header img {
+    height: 10%;
+    width: 10%;
+    vertical-align: middle;
+}
+
+#page_header p {
+    font-weight: bold;
+    font-size: 300%;
+    color: white;
+    padding: 0%;
+}
+
+button {
+    font-weight: bold;
+    font-size: 100%;
+    background-color: black;
+    padding: 0.25% 1%;
+    margin: 0.25%;
+    border: 2px solid blue;
+    color: red;
+}
+
+button:hover {
+    border: 2px solid green;
+    color: orange;
+}
