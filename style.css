@@ -1,21 +1,32 @@
-#img_and_title {
-    text-align: center;
-}
-
-.in_line {
-    display: inline-block;    
-}
-
 #img_and_title img {
     height: 10%;
     width: 10%;
+    margin-bottom: 0;
+}
+
+#nba_logo {
+    height: 10%;
+    width: 10%;
+    background-color: #222;
+    border: 2px solid white;
+    margin-bottom: 0;
 }
 
 h1 {
     font-size: 300%;
+    margin-top: 0;
 }
 
-h1, #last_updated {
+#page_title {
+    font-size: 300%;
+    font-weight: bold;
+    background-color: #222;
+    border: 2px solid white;
+    margin: 0;
+    margin-bottom: 1%;
+}
+
+h1, #page_title, #last_updated {
     color: white;
     text-align: center;
 }
@@ -23,6 +34,8 @@ h1, #last_updated {
 body {
     background-color: #222;
     text-align: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 a button {
@@ -41,11 +54,11 @@ a button:hover {
 }
 
 #map {
-    /*float: right;*/
-    padding-left: 0;
+    background-color: 222;
+    margin: 1%;
     margin-left: 0;
-    max-height: 50%;
-    max-width: 60%;
+    max-height: 40%;
+    max-width: 55%;
 }
 
 div {
@@ -53,24 +66,24 @@ div {
 }
 
 #caption {
+    border: 2px solid white;
+    background-color: #222;
     color: white;
     display: block;
     width: 40%;
     text-align: left;
-    padding-left: 5%;
-    padding-right: 0px;
-    margin-right: 0px;
+    margin-left: 5%;
+    padding: 1%;
 }
 #explanation {
+    border: 2px solid white;
+    background-color: #222;
     color: white;
     float: right;
     width: 40%;
     text-align: left;
-    padding-right: 10%;
-}
-#schedule {
-    width: 600px;
-    height: 900px;
+    margin-right: 10%;
+    padding: 1%
 }
 
 .conf_title {
