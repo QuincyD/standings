@@ -33,7 +33,7 @@ function displayStanding(standings){
                 var table_row = '<tr>';
             }
             table_row += '<td>' + (j+1) + '</td>';
-            table_row += '<td><img src="logos/' +
+            table_row += '<td><img src="imgs/logos/' +
                             team.team_id + '.png"></td>';
             table_row += '<td colspan="' + name_span +
                             '" class="team_name">' + team.name + '</td>';
@@ -64,5 +64,4 @@ standings_obj = parseStandings(teams_obj);
 new_confs = parseNewConfs();
 new_standings = convertStandings(standings_obj, new_confs)
 formatted_standings = formatStandings(new_standings);
-console.log(formatted_standings);
 displayStanding(formatted_standings);
