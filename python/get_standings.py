@@ -34,7 +34,7 @@ def getJSON(json_url, output_filename):
 EFFECTS:    Adds the date and time to a dict and saves it to
             json file output_filename
 '''
-def getTime(output_filename='last_updated.json'):
+def getTime(output_filename='json/last_updated.json'):
 
     time_str = str(datetime.now())
 
@@ -63,6 +63,6 @@ def getTime(output_filename='last_updated.json'):
 
 if __name__ == '__main__':
 
-    getJSON('https://data.nba.net/prod/v1/2017/teams.json', 'teams.json')
-    getJSON('https://data.nba.net/prod/v1/current/standings_conference.json', 'standings.json')
+    getJSON('https://data.nba.net/prod/v1/2017/teams.json', 'json/teams.json')
+    getJSON('https://data.nba.net/prod/v1/current/standings_conference.json', 'json/standings.json')
     getTime()
