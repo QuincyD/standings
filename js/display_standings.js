@@ -1,13 +1,23 @@
 
 function displayStanding(standings){
 
-    var conferences = ['central', 'north_atlantic', 'pacific', 'southeast'];
     var last_updated = parseLastUpdated();
 
-    for (var i = 0; i < conferences.length; i++){
+    for (var conf in standings){
 
-        conf = conferences[i];
+        conferences = document.getElementById('conferences');
+
+        var conf_name = conf.charAt(0).toUpperCase() + conf.slice(1);
+
+        table = '<h2 id=\'' + conf +
+                '_title\' class=\'conf_title\'>' +
+                conf_name + ' Conference</h2>';
+        table += '<table id=\'' + conf + '\'></table>';
+
+        conferences.innerHTML += table;
+
         conf_table = document.getElementById(conf);
+
         team_span = '4';
         name_span = '2';
 
