@@ -1,16 +1,27 @@
-#page_header {
+/*#page_header {
     background-color: #222;
     border: 1px solid white;
     margin: 0 auto;
     padding: 0%;
     padding-bottom: 1%;
     width: 60%;
+}*/
+#page_header p, #page_header img {
+    background-color: #222;
+    border: 1px solid white;
+    vertical-align: top;
+}
+#page_header img {
+    margin-right: 1%;
+}
+#page_header p {
+    margin-left: 1%;
 }
 
 #map {
     background-color: #222;
     border: 2px solid white;
-    padding: 2%;
+    padding: 1%;
     margin: 5%;
     margin-bottom: 0;
 }
