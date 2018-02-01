@@ -2,11 +2,13 @@
     text-align: left;
     margin-bottom: 0;
     margin-left: 3.5%;
-    margin-right: 0;
+    margin-right: 4.5%;
     padding-left: 2.5%;
     font-weight: bold;
     font-size: 175%;
     color: black;
+    background-color: #ddd;
+    border: 2px solid black;
 }
 
 table {
@@ -15,10 +17,14 @@ table {
     text-align: center;
     margin-left: 4.5%;
     border-collapse: collapse;
+    margin-right: 4.5%;
+    background-color: #ddd;
+    border: 3px solid black;
 }
 th {
     font-size: 110%;
     padding: 0.25% 0;
+    border: 3px solid black;
 }
 
 table td {
@@ -38,41 +44,6 @@ td img {
     height: 50px;
     width: 50px;
 }
-
-/*Table colors----------------------*/
-#central_title {
-    background-color: blue; 
-    margin-right: 4.5%;
-}
-#central, #central th {
-    border: 3.5px solid blue;
-    background-color: #ddf;
-}
-#north_atlantic_title {
-    background-color: green; 
-    margin-right: 4.5%;
-}
-#north_atlantic, #north_atlantic th {
-    border: 3.5px solid green;
-    background-color: #dfd;
-}
-#pacific_title {
-    background-color: red; 
-    margin-right: 4.5%;
-}
-#pacific, #pacific th {
-    border: 3.5px solid red;
-    background-color: #fdd;
-}
-#southeast_title {
-    background-color: orange; 
-    margin-right: 4.5%;
-}
-#southeast, #southeast th {
-    border: 3.5px solid orange;
-    background-color: #fda;
-}
-/*~Table colors---------------------*/
 
 #last_updated {
     color: white;
