@@ -54,10 +54,21 @@ $.ajax({
 
 });
 
+function toggleVisibility(element) {
+
+    if (element.style.display === 'none') {
+        element.style.display = 'block';
+    }
+    else {
+        element.style.display = 'none';
+    }
+}
+
 
 function newNums() {
 
     var nums = document.getElementById('conference_num');
+    nums.style.display = 'block';
     nums.innerHTML = '';
 
     var temp_text = '<p>Choose number of converences</p>';
@@ -79,8 +90,19 @@ function restartCreate() {
 
     newNums();
 
-    document.getElementById('conference_names').innerHTML = '';
-    document.getElementById('conference_choices').innerHTML = '';
+    var names = document.getElementById('conference_names');
+    names.innerHTML = '';
+    names.style.display = 'none';
+
+    var choices = document.getElementById('conference_choices');
+    choices.innerHTML = '';
+    choices.style.display = 'none';
+    
+    var i;
+    var teams_len = teams.length;
+    for (i = 0; i < teams_len; i++) {
+        delete teams[i]['conference'];
+    }
 }
 
 function showNumButton(num) {
@@ -99,14 +121,17 @@ function showNumButton(num) {
 
 function nameConferences() {
     
-    document.getElementById('conference_num').innerHTML = ''; 
+    var temp_elt = document.getElementById('conference_num');
+    temp_elt.innerHTML = ''; 
+    toggleVisibility(temp_elt);
 
     var conferences = document.getElementById('conference_names');
+    toggleVisibility(conferences);
+
     var temp_text = '<p>Name your conferences</p>';
 
     for (var i = 0; i < clicked_num; i++) {
-        temp_text += '<input class=\'color_' + i + '\' ';
-        temp_text += 'type=\'text\' name=\'conf_';
+        temp_text += '<input type=\'text\' name=\'conf_';
         temp_text += 'name\' value=\'' + temp_names[i];
         temp_text += '\'>&nbsp;Conference<br>'; 
     }
@@ -129,14 +154,18 @@ function chooseConferences() {
     }
     given_names.sort();
 
-    document.getElementById('conference_names').innerHTML = '';
+    var temp_elt = document.getElementById('conference_names')
+    temp_elt.innerHTML = '';
+    toggleVisibility(temp_elt);
     
     displayChoices();
 }
 
 function displayChoices() {
 
-    conference_choices = document.getElementById('conference_choices');
+    var conference_choices = document.getElementById('conference_choices');
+    toggleVisibility(conference_choices);
+
     chosen = 0;
 
     var temp_text = '<p>Choose conference for each team</p><br>';
@@ -148,10 +177,11 @@ function displayChoices() {
         var name = teams[i]['name'];
         var team_id = teams[i]['team_id'];
 
+        temp_text += '<div id=\'team_' + i + '\'>';
         temp_text += '<img src=\'../imgs/logos/' + team_id;
         temp_text += '.png\' class=\'line\'>';
         temp_text += '&nbsp;<p class=\'line\'>' + name + ': '; 
-        temp_text += '<br>';
+        temp_text += '</div><br>';
 
         temp_text += '<form class=\'choices\'>';
 
@@ -161,7 +191,13 @@ function displayChoices() {
 
             var name = given_names[j];
 
-            temp_text += '<button class=\'color_' + j;
+            if (given_len === 2) {
+                var color_class = j+1;
+            }
+            else {
+                var color_class = j;
+            }
+            temp_text += '<button class=\'color_' + color_class;
             temp_text += '\' onclick';
             temp_text += '=\'chooseConference(' + i + ', ' + j;
             temp_text += '); return false;\'>' + name + '</button>';
@@ -175,10 +211,23 @@ function displayChoices() {
         temp_text += '</form></p><br>';
     }
 
+    temp_text += '<p>If an OK button hasn\'t appeared';
+    temp_text += ', at least one team hasn\'t been'
+    temp_text += ' given a conference above.</p><br>';
+
     conference_choices.innerHTML = temp_text;
 }
 
 function chooseConference(team_num, conf_num) {
+
+    if (given_names.length === 2) {
+        var back_class = conf_num + 1;
+    }
+    else {
+        var back_class = conf_num;
+    }
+    var class_name = 'back_' + back_class;
+    document.getElementById('team_'+team_num).setAttribute('class', class_name);
 
     if (teams[team_num].hasOwnProperty('conference')) {
         teams[team_num]['conference'] = conf_num;
@@ -186,6 +235,7 @@ function chooseConference(team_num, conf_num) {
     }
 
     teams[team_num]['conference'] = conf_num;
+
     chosen += 1;
     console.log(chosen);
 
@@ -195,4 +245,4 @@ function chooseConference(team_num, conf_num) {
     }
 }
 
-newNums();
+restartCreate();
