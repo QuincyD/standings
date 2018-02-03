@@ -1,0 +1,57 @@
+img {
+    height: 50px;
+    width: 50px;
+    vertical-align: middle;
+}
+button {
+    margin: 2%;
+}
+.line {
+    display: inline-block;
+}
+
+.radio_btn {
+    margin: 5%;
+    margin-right: 2%;
+}
+
+#conference_num, #conference_names, #conference_choices {
+    font-size: 150%;
+    color: white;
+    background-color: #222;
+    border: 2px solid white;
+    margin: 3%;
+    padding: 1%;
+}
+
+#conference_num {
+    text-align: left;
+    width: 30%;
+    margin-left: 10%;
+}
+
+#wrapper {
+    width: 100%;
+    float: left;
+}
+#conference_names {
+    float: right;
+    width: 40%;
+    margin-right: 10;
+}
+input {
+    font-size: 75%;
+    margin: 1.5%;
+}
+
+#conference_choices {
+    text-align: left;
+    margin-left: 10%;
+    width: 40%;
+}
+.radio_btns {
+    font-size: 100%;
+    margin: 1.5%;
+    margin-left: 2%;
+    margin-right: 0;
+}
