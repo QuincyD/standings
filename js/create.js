@@ -237,12 +237,29 @@ function chooseConference(team_num, conf_num) {
     teams[team_num]['conference'] = conf_num;
 
     chosen += 1;
-    console.log(chosen);
 
     if (chosen >= teams.length){
         conference_choices.innerHTML += 
-            '<button onclick=\'return false;\'>OK!!!</button>';
+            '<button onclick=\'saveCustom(); return false;\'>OK!!!</button>';
     }
+}
+
+function saveCustom(){
+    var choices = document.getElementById('conference_choices');
+    toggleVisibility(choices);
+
+    Cookies.set('conferences', JSON.stringify(given_names));
+    var i;
+    var teams_len = teams.length;
+    var custom = {};
+    for (i = 0; i < teams_len; i++) {
+
+        var team_id = teams[i]['team_id'];
+        var conf_num = teams[i]['conference'];
+
+        custom[team_id] = conf_num;
+    }
+    Cookies.set('custom', JSON.stringify(custom));
 }
 
 restartCreate();

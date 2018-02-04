@@ -5,6 +5,7 @@
 <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
 
 <script type='text/javascript' src='http://code.jquery.com/jquery-latest.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
 <link rel='stylesheet' type='text/css' href='../css/style.css'>
 <link rel='stylesheet' type='text/css' href='../css/create.css'>
@@ -16,7 +17,7 @@
 <div id='create_nav'></div>
 <script type='text/javascript' src='../js/header.js'></script>
 
-<button onclick='restartCreate();return false;'>Start Over</button>
+<button id='over' onclick='restartCreate();return false;'>Start Over</button>
 
 <div id='conference_num'></div>
 

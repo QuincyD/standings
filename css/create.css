@@ -1,4 +1,8 @@
-button {
+#over {
+    margin-top: 3%;
+}
+
+#conference_num button, #conference_names button, #conference_choices button {
     font-size: 80%;
     margin: 1%;
     padding: 1%;
@@ -96,7 +100,7 @@ img {
     color: yellow;
 }
 .back_5 {
-    background-color: #dd9;
+    background-color: #dd0;
 }
 
 .color_6 {
