@@ -11,7 +11,16 @@
 
 </head>
 
-<body background='../imgs/backgrounds/5.png'>
+<body>
+
+<script type='text/javascript'>
+
+    var rand_int = parseInt(Math.random() * 6);
+    var img_name = '../imgs/backgrounds/' + rand_int + '.png';
+
+    document.body.background = img_name;
+
+</script>
 
 <div id='page_header'></div>
 <div id='map_nav'></div>
