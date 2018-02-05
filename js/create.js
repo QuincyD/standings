@@ -53,6 +53,59 @@ function toggleVisibility(element) {
     }
 }
 
+function restartCreate(edit=false) {
+    
+    if (edit === false) {
+        newNums();
+    }
+    else {
+        var nums = document.getElementById('conference_num');
+        nums.innerHTML = '';
+        nums.style.display = 'none';
+    }
+
+    var names = document.getElementById('conference_names');
+    names.innerHTML = '';
+    names.style.display = 'none';
+
+    var choices = document.getElementById('conference_choices');
+    choices.innerHTML = '';
+    choices.style.display = 'none';
+    
+    var i;
+    var teams_len = teams.length;
+    for (i = 0; i < teams_len; i++) {
+        delete teams[i]['conference'];
+    }
+
+    if (customizations && edit === false) {
+
+        var editing = document.getElementById('editing');
+
+        var btn_text = '';
+        btn_text += '<button onclick=\'editCustomized(); return false;\'>';
+        btn_text += 'Edit</button>';
+
+        editing.innerHTML = btn_text;
+    }
+    else if (customizations) {
+
+        var editing = document.getElementById('editing');
+
+        var btn_text = '';
+        btn_text += '<button onclick=\'restartCreate(); return false;\'>';
+        btn_text += 'Cancel</button>';
+
+        editing.innerHTML = btn_text;
+
+    }
+    else {
+
+        document.getElementById('editing').innerHTML = '';
+
+    }
+
+}
 
 function newNums() {
 
@@ -72,30 +125,16 @@ function newNums() {
     temp_text += '</form>';
     
     nums.innerHTML += temp_text;
+    clicked_num = 1;
 
-}
-
-function restartCreate() {
-
-    newNums();
-
-    var names = document.getElementById('conference_names');
-    names.innerHTML = '';
-    names.style.display = 'none';
-
-    var choices = document.getElementById('conference_choices');
-    choices.innerHTML = '';
-    choices.style.display = 'none';
-    
-    var i;
-    var teams_len = teams.length;
-    for (i = 0; i < teams_len; i++) {
-        delete teams[i]['conference'];
-    }
 }
 
 function showNumButton(num) {
 
+    
+    if (clicked_num !== 1) {
+        document.getElementById(clicked_num).checked = false;
+    }
     clicked_num = parseInt(num);
 
     if (document.getElementById('num_btn')) {
@@ -106,6 +145,15 @@ function showNumButton(num) {
     '<button id=\'num_btn\' onclick=\'nameConferences();return false;\'>OK!</button>';
 
     document.getElementById(num).checked = true;
+
+    var editing = document.getElementById('editing');
+
+    var btn_text = '';
+    btn_text += '<button onclick=\'restartCreate();return false;\'>';
+    btn_text += 'Start Over</button>';
+
+    editing.innerHTML = btn_text;
+
 }
 
 function nameConferences() {
@@ -143,6 +191,7 @@ function chooseConferences() {
     }
     given_names.sort();
 
+
     var temp_elt = document.getElementById('conference_names')
     temp_elt.innerHTML = '';
     toggleVisibility(temp_elt);
@@ -150,7 +199,7 @@ function chooseConferences() {
     displayChoices();
 }
 
-function displayChoices() {
+function displayChoices(edit=false) {
 
     var conference_choices = document.getElementById('conference_choices');
     toggleVisibility(conference_choices);
@@ -257,6 +306,24 @@ function saveCustom(){
 
     Cookies.set('customizations', JSON.stringify(cookie_data));
     window.location = '../index.html';
+}
+
+function editCustomized(){
+
+    restartCreate(true);
+    given_names = customizations['conferences'];
+    displayChoices(false);
+}
+
+if (customizations = Cookies.getJSON('customizations')) {
+
+    var edit_text = '';
+
+    edit_text += '<button onclick=\'editCustomized(); return false;\'>';
+    edit_text += 'Edit</button>';
+
+    document.getElementById('editing').innerHTML = edit_text;
+
 }
 
 restartCreate();
