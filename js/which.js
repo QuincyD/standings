@@ -1,23 +1,22 @@
 function showButtons() {
 
     var custom_btn = document.getElementById('custom_btn');
+    var btn_text = '';
 
-    var button_text = '<h3 class=\'line\'>Conferences: </h3>';
+    btn_text += '<h3 class=\'line\'>Customized Conferences:</h3>';
+    btn_text += '<label class=\'switch\'>';
+    btn_text += '<input type=\'checkbox\' checked>';
+    btn_text += '<span class=\'slider\' onclick=\'toggleConferences()\'><span>';
+    btn_text += '</label>';
 
-    button_text += '<button class=\'line\' onclick=';
-    button_text +=  '\'showSiteConfs(); return false;\'';
-    button_text +=  '>Site\'s</button>';
 
-    button_text += '<button class=\'line\'  onclick=';
-    button_text += '\'showUserConfs(); return false;\'';
-    button_text += '>Customized<//button>';
-
-    custom_btn.innerHTML = button_text;
+    custom_btn.innerHTML = btn_text;
 }
 
 function showSiteConfs() {
 
     document.getElementById('conferences').innerHTML = '';
+    showing_customized = false;
 
     var new_standings = convertStandings(standings, site_confs)
     var conference_names = ['Central', 'North Atlantic', 'Pacific', 'Southeast'];
@@ -31,6 +30,7 @@ function showSiteConfs() {
 function showUserConfs() {
 
     document.getElementById('conferences').innerHTML = '';
+    showing_customized = true;
 
     var custom_confs = customizations['custom'];
     var conference_names = customizations['conferences'];
@@ -41,6 +41,15 @@ function showUserConfs() {
     displayStandings(formatted_standings, conference_names, last_updated);
 
     return false;
+}
+
+function toggleConferences() {
+    if (showing_customized === true) {
+        showSiteConfs();
+    }
+    else {
+        showUserConfs();
+    }
 }
 
 
