@@ -44,6 +44,9 @@ function addNav(){
     var temp_text = '';
     if (nav = document.getElementById('index_nav')) {
 
+        temp_text += '<a href=\'html/create.html\'><button>Customize';
+        temp_text += '</button></a>'; 
+        
         temp_text += '<a href=\'html/map.html\'><button>Details';
         temp_text += '</button></a>'; 
         
@@ -58,6 +61,9 @@ function addNav(){
         temp_text += '<a href=\'../index.html\'><button>Standings';
         temp_text += '</button></a>'; 
 
+        temp_text += '<a href=\'create.html\'><button>Customize';
+        temp_text += '</button></a>'; 
+        
         temp_text += '<a href=\'about.html\'><button>About</button></a>'; 
 
         nav.innerHTML += temp_text;
@@ -68,6 +74,9 @@ function addNav(){
         temp_text += '<a href=\'../index.html\'><button>Standings';
         temp_text += '</button></a>'; 
 
+        temp_text += '<a href=\'create.html\'><button>Customize';
+        temp_text += '</button></a>'; 
+        
         temp_text += '<a href=\'map.html\'><button>Details';
         temp_text += '</button></a>'; 
 

@@ -9,39 +9,40 @@ colors[6] = {'color':'white', 'back':'#eee'};
 colors[7] = {'color':'#444', 'back':'#ccc'};
 
 
-function displayStanding(standings){
+function displayStandings(standings, conference_names, last_updated){
 
-    var last_updated = parseLastUpdated();
-    var sorted_confs = [];
-    for (var conf in standings) {
-        sorted_confs.push(conf); 
+    var conf_colors = document.getElementById('conf_colors');
+    conf_colors.innerHTML = '';
+
+
+    var i;
+    var confs_len = conference_names.length;
+    if (confs_len === 2) {
+        var k = 1;
     }
-    sorted_confs.sort();
-
-    var k = 0;
-    for (var i = 0; i < sorted_confs.length; i++){
+    else {
+        var k = 0;
+    }
+    for (var i = 0; i < confs_len; i++){
 
         conferences = document.getElementById('conferences');
 
-        conf = sorted_confs[i];
-        var conf_name = conf.charAt(0).toUpperCase() + conf.slice(1);
+        var conf_name = conference_names[i];
 
-        var table = '<h2 id=\'' + conf +
-                '_title\' class=\'conf_title\'>' +
+        var table = '<h2 id=\'title_' + i +
+                '\' class=\'conf_title\'>' +
                 conf_name + ' Conference</h2>';
-        table += '<table id=\'' + conf + '\'></table>';
+        table += '<table id=\'table_' + i + '\'></table>';
 
         conferences.innerHTML += table;
 
         // Addition of table colors ----------------------------
-        var conf_colors = document.getElementById('conf_colors');
-
-        var title_color = '#' + conf + '_title {';
+        var title_color = '#title_' + i + ' {';
         title_color += 'background-color: ' + colors[k]['color'] +
                         ';';
         title_color += '}';
 
-        var table_colors = '#' + conf + ', #' + conf + ' th {';
+        var table_colors = '#table_' + i + ', #table_' + i + ' th {';
         table_colors += 'background-color: ' + colors[k]['back'] +
                         ';';
         table_colors += 'border: 3px solid ' + colors[k]['color'] +
@@ -58,7 +59,7 @@ function displayStanding(standings){
         conf_colors.innerHTML += table_colors;
         //~Addition of table colors ---------------------------
 
-        conf_table = document.getElementById(conf);
+        conf_table = document.getElementById('table_' + i);
 
         team_span = '4';
         name_span = '2';
@@ -74,11 +75,11 @@ function displayStanding(standings){
 
         conf_table.innerHTML = table_head;
 
-        for (var j = 0; j < standings[conf].length; j++) {
+        for (var j = 0; j < standings[i].length; j++) {
 
-            var team = standings[conf][j];
+            var team = standings[i][j];
 
-            if (j === 4){
+            if (j === parseInt(16/confs_len)){
                 var table_row = '<tr class="top_border">';
             }
             else {
@@ -110,10 +111,11 @@ function displayStanding(standings){
 
     return;
 }
-
+/*
 teams_obj = parseTeams();
 standings_obj = parseStandings(teams_obj);
 new_confs = parseNewConfs();
 new_standings = convertStandings(standings_obj, new_confs)
 formatted_standings = formatStandings(new_standings);
-displayStanding(formatted_standings);
+displayStandings(formatted_standings);
+*/

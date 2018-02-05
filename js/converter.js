@@ -48,7 +48,9 @@ function formatStandings(standings) {
 
         var top_team = formatted[conf][0];
 
-        for (var j = 0; j < formatted[conf].length; j++) {
+        var j;
+        var format_len = formatted[conf].length;
+        for (j = 0; j < format_len; j++) {
 
             var other_team = formatted[conf][j];
 

@@ -245,10 +245,14 @@ function chooseConference(team_num, conf_num) {
 }
 
 function saveCustom(){
+
     var choices = document.getElementById('conference_choices');
     toggleVisibility(choices);
 
-    Cookies.set('conferences', JSON.stringify(given_names));
+    var cookie_data = {};
+
+    cookie_data['conferences'] = given_names;
+
     var i;
     var teams_len = teams.length;
     var custom = {};
@@ -259,7 +263,11 @@ function saveCustom(){
 
         custom[team_id] = conf_num;
     }
-    Cookies.set('custom', JSON.stringify(custom));
+
+    cookie_data['custom'] = custom;
+
+    Cookies.set('customizations', JSON.stringify(cookie_data));
+    window.location = '../index.html';
 }
 
 restartCreate();
