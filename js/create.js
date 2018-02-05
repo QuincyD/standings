@@ -8,17 +8,6 @@ temp_names[5] = 'North Western';
 temp_names[6] = 'South Eastern';
 temp_names[7] = 'South Western';
 
-colors = [];
-colors[0] = {'color':'blue', 'back':'#ddf'};
-colors[1] = {'color':'green', 'back':'#dfd'};
-colors[2] = {'color':'red', 'back':'#fdd'};
-colors[3] = {'color':'orange', 'back':'#fda'};
-colors[4] = {'color':'purple', 'back':'#ecf'};
-colors[5] = {'color':'yellow', 'back':'#ffd'};
-colors[6] = {'color':'white', 'back':'#eee'};
-colors[7] = {'color':'#444', 'back':'#ccc'};
-
-
 teams = [];
 $.ajax({
 

@@ -111,11 +111,3 @@ function displayStandings(standings, conference_names, last_updated){
 
     return;
 }
-/*
-teams_obj = parseTeams();
-standings_obj = parseStandings(teams_obj);
-new_confs = parseNewConfs();
-new_standings = convertStandings(standings_obj, new_confs)
-formatted_standings = formatStandings(new_standings);
-displayStandings(formatted_standings);
-*/
