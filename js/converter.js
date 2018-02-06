@@ -1,3 +1,14 @@
+/*
+    REQUIRES:   standings_obj is an object with the
+                properties east and west that map
+                to arrays of objects that represent
+                teams. new_confs is an object that
+                maps team_id's to new conferences 
+
+    EFFECTS:    Returns a new standings object that maps
+                new conference to an array of team objects
+                that belong to the conference.
+*/
 function convertStandings(standings_obj, new_confs){
 
     var new_standings = {};
@@ -25,6 +36,14 @@ function convertStandings(standings_obj, new_confs){
     return new_standings;
 }
 
+/*
+    REQUIRES:   team1 and team2 are objects with win_percent
+                properties.
+
+    EFFECTS:    Returns 1 if team1 has greater win_percent,
+                -1 if team2 has greater win_percent, and
+                0 otherwise.
+*/
 function comparison(team1, team2) {
 
     if(team1.win_percent < team2.win_percent){
@@ -38,6 +57,19 @@ function comparison(team1, team2) {
     return 0;
 }
 
+/*
+    REQUIRES:   standings is an object that maps
+                conferences to their respective array
+                of belonging teams.
+
+    EFFECTS:    Returns a standings object where each
+                conference's array of team objects is
+                ordered by win_percent property and
+                where each team is given a games_behind
+                property for the calculated games
+                for which they are behind the top
+                ranked team in their conference 
+*/
 function formatStandings(standings) {
 
     var formatted = standings;

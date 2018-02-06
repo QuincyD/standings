@@ -43,6 +43,12 @@ $.ajax({
 
 });
 
+/*
+    REQUIRES:   element is an element on the calling html
+                page's DOM
+
+    EFFECT:     Toggles the element's visibility
+*/
 function toggleVisibility(element) {
 
     if (element.style.display === 'none') {
@@ -53,6 +59,17 @@ function toggleVisibility(element) {
     }
 }
 
+/*
+    REQUIRES:   calling html page has element of id =
+                'conference_num', 'conference_names',
+                'conference_choices', and 'editing'
+
+    EFFECTS:    Clears/hides the elements with id's listed 
+                in REQUIRES and adds html to page based on
+                if edit is true or not and if the
+                customizations object has been defined
+                by using a stored cookie.
+*/
 function restartCreate(edit=false) {
     
     if (edit === false) {
@@ -107,6 +124,14 @@ function restartCreate(edit=false) {
 
 }
 
+/*
+    REQUIRES:   An element with id='conference_num' is on
+                the calling page's html
+
+    EFFECT:     Displays the div for choosing the amount
+                of conferences when creating a new set of
+                conferences.
+*/
 function newNums() {
 
     var nums = document.getElementById('conference_num');
@@ -129,6 +154,15 @@ function newNums() {
 
 }
 
+/*
+    REQUIRES:   The calling html page's DOM has elements with
+                id's 'conference_num' and 'editing' and clicked_num
+                is a global variable defined somewhere.
+
+    EFFECTS:    Shows an OK button for choosing the number
+                of conferences and replaces anything in the
+                'editing' element with a Start Over button.
+*/
 function showNumButton(num) {
 
     
@@ -156,6 +190,18 @@ function showNumButton(num) {
 
 }
 
+/*
+    REQUIRES:   The calling html page's DOM has elements with
+                id's 'conference_num' and 'conference_names'.
+                Also, clicked_num is a global integer defined
+                somewhere and temp_names is a global array of
+                strings defined somehwere.
+
+    EFFECTS:    Hides the div for choosing conference nums and
+                creates clicked num amount of text inputs for
+                naming the conferences with initial temporary
+                names as values
+*/
 function nameConferences() {
     
     var temp_elt = document.getElementById('conference_num');
@@ -178,6 +224,15 @@ function nameConferences() {
     conferences.innerHTML = temp_text;
 }
 
+/*
+    REQUIRES:   The calling html page's DOM has elements with
+                id='conference_names' and elements with
+                name='conf_name'.
+
+    EFFECTS:    Hides the div for choosing conference names
+                and calls displayChoices() to display all
+                teams to assign to one of the conferences.
+*/
 function chooseConferences() {
 
     var conf_names = document.getElementsByName('conf_name');
@@ -199,6 +254,18 @@ function chooseConferences() {
     displayChoices();
 }
 
+/*
+    REQUIRES:   An element with id='conference_choices' is on the
+                calling html page and if edit is true, an element
+                with id='editing' is on html page. Also, teams is
+                a global array of team objects defined somewhere
+                and if edit is true, customizations is a global
+                object of a custom conference map and a
+                conference names array
+
+    EFFECTS:    Displays the each team in teams array with buttons
+                to choose which conference to assign the team
+*/
 function displayChoices(edit=false) {
 
     var conference_choices = document.getElementById('conference_choices');
@@ -283,6 +350,20 @@ function displayChoices(edit=false) {
     conference_choices.innerHTML = temp_text;
 }
 
+/*
+    REQUIRES:   chosen is a global integer defined somewhere,
+                the calling page's DOM has an elements with
+                id's = 'team_{team_num}' and 'conference_choices,
+                and teams is a global array defined somewhere
+
+    EFFECTS:    Sets the conference of the team_num object
+                in the teams array to conf_num and sets the
+                class attribute of element with
+                id='team_{team_num}' to conf_num or conf_num
+                + 1 there are only 2 conferences.
+                If chosen is equal to the length of teams
+                then add a OK button to 'conference_choices' 
+*/
 function chooseConference(team_num, conf_num) {
 
     if (given_names.length === 2) {
@@ -304,11 +385,31 @@ function chooseConference(team_num, conf_num) {
     chosen += 1;
 
     if (chosen >= teams.length){
+
+        var conference_choices =
+            document.getElementById('conference_choices');
+
         conference_choices.innerHTML += 
             '<button onclick=\'saveCustom(); return false;\'>OK!!!</button>';
     }
 }
 
+/*
+    REQUIRES:   The calling page's DOM as an element with
+                id='conference_choices', teams is a global
+                array of team objects, and customizations
+                is a global object of conference names and
+                team conference assignments if edit is true.
+
+    EFFECTS:    Saves the conference names and each team
+                conference choices to a cookie as
+
+                customizations =
+                    { 'custom': [team_id_0: {...},
+                                 team_id_1: {...}, ...],
+
+                      'conferences': [conf_name_0, ...] }
+*/
 function saveCustom(edit=false){
 
     var choices = document.getElementById('conference_choices');
@@ -340,6 +441,10 @@ function saveCustom(edit=false){
     window.location = '../index.html';
 }
 
+/*
+    EFFECTS:    Displays already chosen conference choices for
+                editing.
+*/
 function editCustomized(){
 
     restartCreate(true);

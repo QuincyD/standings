@@ -1,3 +1,8 @@
+/*
+    REQUIRES:
+
+    EFFECTS:
+*/
 function showButtons() {
 
     var custom_btn = document.getElementById('custom_btn');
@@ -13,6 +18,16 @@ function showButtons() {
     custom_btn.innerHTML = btn_text;
 }
 
+/*
+    REQUIRES:   The calling page's DOM has an element with
+                id='conferences'. Global variables standings,
+                site_confs, and last_updated are defined
+                somewhere.
+
+    EFFECTS:    Displays the conference standings that are
+                original to convertnba site and sets
+                showing customized to false
+*/
 function showSiteConfs() {
 
     document.getElementById('conferences').innerHTML = '';
@@ -27,6 +42,16 @@ function showSiteConfs() {
     return false;
 }
 
+/*
+    REQUIRES:   The calling page's DOM has an element with
+                id='conferences'. Global variables standings,
+                customizations, and last_updated are defined
+                somewhere.
+
+    EFFECTS:    Displays the conference standings that have 
+                been created by the user and sets
+                showing_customized to true 
+*/
 function showUserConfs() {
 
     document.getElementById('conferences').innerHTML = '';
@@ -43,6 +68,14 @@ function showUserConfs() {
     return false;
 }
 
+/*
+    REQUIRES:   showing_customized is a global boolean defined
+                somewhere
+
+    EFFECTS:    Toggles the conferences being showed between
+                the site's original conferences and the user's
+                customized conferences.
+*/
 function toggleConferences() {
     if (showing_customized === true) {
         showSiteConfs();

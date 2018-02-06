@@ -1,3 +1,13 @@
+
+/*
+    REQUIRES:   The head element in the calling html file has
+                id='head'
+
+    EFFECTS:    Adds the tab title and favicon to the calling
+                html page. Also, calls addHeader() and addNav()
+                to add website page header and page's navigation
+                links.
+*/
 function addPageElts() {
 
     var head = document.getElementById('head');
@@ -20,6 +30,13 @@ function addPageElts() {
     addNav();
 }
 
+/*
+    REQUIRES:   There exists an element with id='page_header'
+                and an image 'img/nba_add.png'
+
+    EFFECTS:    Adds the logo and title to the calling page's
+                body
+*/
 function addHeader(){
 
     var header = document.getElementById('page_header');
@@ -40,6 +57,12 @@ function addHeader(){
 
 }
 
+/*
+    EFFECTS:    Adds navigation links as buttons to calling
+                html page based on if there exists an
+                element with id={'index_nav', 'map_nav',
+                'about_nav', and/or 'create_nav'}
+*/
 function addNav(){
     var temp_text = '';
     if (nav = document.getElementById('index_nav')) {

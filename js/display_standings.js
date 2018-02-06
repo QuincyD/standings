@@ -8,7 +8,19 @@ colors[5] = {'color':'yellow', 'back':'#ffd'};
 colors[6] = {'color':'white', 'back':'#eee'};
 colors[7] = {'color':'#444', 'back':'#ccc'};
 
+/*
+    REQUIRES:   standings is an object that maps conference indices
+                to an array of team objects. conference_names is an
+                array of conference names that coincide with the
+                conference indices in standings. last_updated is a
+                string. Also requires that the calling html page
+                has elements with id's equal to 'conf_colors',
+                'conferences', and 'last_updated'
 
+    EFFECTS:=   Displays all the tables for the conferences in
+                standings labeled by their conference names and
+                adds last_updated to page.
+*/
 function displayStandings(standings, conference_names, last_updated){
 
     var conf_colors = document.getElementById('conf_colors');

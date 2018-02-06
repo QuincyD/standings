@@ -1,5 +1,10 @@
 import json
 
+'''
+    EFFECTS:    saves a dict that maps team id's to
+                conference indices to the json file
+                json/new_confs.json
+'''
 def saveNewConfs(): 
 
     '''

@@ -1,3 +1,12 @@
+/*
+    REQUIRES:   json/standings.json is the teams.json
+                file saved by python/get_standings.py
+
+    EFFECTS:    Returns a teams object of teams' team_ids
+                mapped to their respective full_names where 
+                isNBAFranchise was true.
+                
+*/
 function parseTeams(){
 
     var teams_obj = {};
@@ -36,6 +45,24 @@ function parseTeams(){
 
 }
 
+/*
+    REQUIRES:   json/standings.json is the standings.json
+                file saved by python/get_standings.py, and
+                teams_obj is an object that can map a team's
+                team_id to its full team name for all teams
+                to be included in the standings.
+
+    EFFECTS:    Returns a standings object that maps the
+                east and west conferences to an array
+                containing team objects that have full name
+                (name), total amount of wins (win), total
+                losses (loss), win percentage (win_percent),
+                amount of wins in last ten games
+                (last_ten_win), and the amount of losses in
+                last ten games (last_ten_loss) for each
+                respective team. 
+                
+*/
 function parseStandings(teams_obj){
 
     var standings_obj = {};
@@ -96,6 +123,16 @@ function parseStandings(teams_obj){
 
 }
 
+/*
+    REQUIRES:   json/new_confs.json is the new_confs.json
+                file saved by python/get_standings.py
+
+    EFFECTS:    Returns an object that maps team_id's to
+                their conference. Each conference is
+                a number char of the index of the 
+                conferences place in an alphabetical list
+                of all conference names.
+*/
 function parseNewConfs() {
 
     var new_confs;
@@ -113,6 +150,14 @@ function parseNewConfs() {
 
 }
 
+/*
+    REQUIRES:   json/last_updated.json is the last_updated.json
+                file saved by python/get_standings.py
+
+    EFFECTS:    Returns a string that represents the last time
+                python/get_standings.py was run to update the
+                standings.
+*/
 function parseLastUpdated(){
 
     var last_updated;
