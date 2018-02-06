@@ -215,7 +215,20 @@ function displayChoices(edit=false) {
         var name = teams[i]['name'];
         var team_id = teams[i]['team_id'];
 
-        temp_text += '<div id=\'team_' + i + '\'>';
+        if (edit === true) {
+            var class_name = 'back_';
+            var class_num = customizations['custom'][team_id];
+            if (customizations['conferences'].length === 2) {
+                class_num += 1;
+            }
+            class_name += class_num; 
+            temp_text += '<div id=\'team_' + i + '\' class=\'';
+            temp_text += class_name + '\'>';
+        }
+        else {
+            temp_text += '<div id=\'team_' + i + '\'>';
+        }
+
         temp_text += '<img src=\'../imgs/logos/' + team_id;
         temp_text += '.png\' class=\'line\'>';
         temp_text += '&nbsp;<p class=\'line\'>' + name + ': '; 
@@ -249,9 +262,23 @@ function displayChoices(edit=false) {
         temp_text += '</form></p><br>';
     }
 
-    temp_text += '<p>If an OK button hasn\'t appeared';
-    temp_text += ', at least one team hasn\'t been'
-    temp_text += ' given a conference above.</p><br>';
+    if (edit === false) {
+        temp_text += '<p>If an OK button hasn\'t appeared';
+        temp_text += ', at least one team hasn\'t been'
+        temp_text += ' given a conference above.</p><br>';
+    }
+    else {
+        var editing = document.getElementById('editing');
+        var btn_text = '';
+
+        btn_text += '<button onclick=\'saveCustom(true); return false;\'>';
+        btn_text += 'Save</button>';
+
+        btn_text += '<button onclick=\'restartCreate(); return false;\'>';
+        btn_text += 'Cancel</button>';
+
+        editing.innerHTML = btn_text;
+    }
 
     conference_choices.innerHTML = temp_text;
 }
@@ -282,7 +309,7 @@ function chooseConference(team_num, conf_num) {
     }
 }
 
-function saveCustom(){
+function saveCustom(edit=false){
 
     var choices = document.getElementById('conference_choices');
     toggleVisibility(choices);
@@ -297,7 +324,12 @@ function saveCustom(){
     for (i = 0; i < teams_len; i++) {
 
         var team_id = teams[i]['team_id'];
-        var conf_num = teams[i]['conference'];
+        if (edit === true && !teams[i].hasOwnProperty('conference')) {
+            var conf_num = customizations['custom'][team_id];
+        }
+        else {
+            var conf_num = teams[i]['conference'];
+        }
 
         custom[team_id] = conf_num;
     }
@@ -312,7 +344,7 @@ function editCustomized(){
 
     restartCreate(true);
     given_names = customizations['conferences'];
-    displayChoices(false);
+    displayChoices(true);
 }
 
 if (customizations = Cookies.getJSON('customizations')) {
