@@ -345,6 +345,9 @@ function displayChoices(edit=false) {
         btn_text += 'Cancel</button>';
 
         editing.innerHTML = btn_text;
+
+        temp_text += '<p>Save and Cancel buttons are located near';
+        temp_text += ' top of page.</p>';
     }
 
     conference_choices.innerHTML = temp_text;
