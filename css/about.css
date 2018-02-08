@@ -1,0 +1,59 @@
+:root {
+    --tan-ish: #d9bc70;
+}
+
+/*
+#page_header p {
+    color: black;
+}
+*/
+
+button {
+    margin-bottom: 5%;
+}
+
+#back_story, #personal_profile {
+    width: 30%;
+    margin: 2%;
+    margin-left: 7.5%;
+
+    padding: 1%;
+
+    text-align: left;
+    font-size: 100%;
+
+    background-color: var(--tan-ish);
+    border: 2px solid black;
+}
+
+#site_reason {
+    width: 30%;
+
+    margin: 2%;
+    margin-right: 7.5%;
+    margin-left:60%;
+
+    padding: 1%;
+
+    text-align: left;
+    font-size: 100%;
+
+    background-color: var(--tan-ish);
+    border: 2px solid black;
+}
+
+#footnote {
+    width: 30%;
+
+    margin: 2%;
+    margin-left: 35%;
+    margin-top: 20%;
+
+    padding: 1%;
+
+    font-size: 80%;
+    text-align: left;
+
+    background-color: var(--tan-ish);
+    border: 2px solid black;
+}
