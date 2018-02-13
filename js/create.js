@@ -138,7 +138,7 @@ function newNums() {
     nums.style.display = 'block';
     nums.innerHTML = '';
 
-    var temp_text = '<p>Choose number of converences</p>';
+    var temp_text = '<p>Choose number of conferences</p>';
     temp_text += '<form id=\'num_form\'>';
 
     for (var i = 2; i <= 8; i++) {
