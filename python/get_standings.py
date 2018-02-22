@@ -44,7 +44,7 @@ def getTime(output_filename='json/last_updated.json'):
     date = month + '/' + day + '/' + year
 
     hour = int(time_str[11:13])
-    if(hour >= 12):
+    if(hour > 12):
         hour -= 12
         hour = str(hour)
         am_pm = 'pm'
