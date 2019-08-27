@@ -1,9 +1,8 @@
 # standings
 A JavaScript driven web page to display possible NBA standings
-based on converted conferences. Online at:
-                                   http://convertnbatk.000webhostapp.com 
+based on converted conferences. No longer live online.
 
-To use locally, simply pull and visit index.html
+To use locally, pull the code and visit index.html.
 
 Run python/get_standings.py to update standings after official
 NBA games
@@ -11,6 +10,16 @@ NBA games
 Run python/create_new_confs.py to yield the conversions json file,
 new_confs.json
 
-Adjust the conferences in python/create_new_confs.py and change
-conference_names in showSiteCustom() function of js/which.js, if
-you would like to change the primary converted conferences.
+You may get the error below when you visit the html pages:
+"XMLHttpRequest cannot load file://<json file url>
+Cross origin requests are only supported for protocol schemes:
+http, data, chrome, chrome-extension, https."
+
+One work around is to go to the standings directory in a terminal
+and run "python -m SimpleHTTPServer" to create a simple server to
+host the site and go to that address in your browser.
+
+Conferences can be customized on the site, but to adjust the
+default converted conferences, adjust the conferences in
+python/create_new_confs.py and change conference_names in
+showSiteCustom() function of js/which.js.
