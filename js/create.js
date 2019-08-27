@@ -11,7 +11,7 @@ temp_names[7] = 'South Western';
 teams = [];
 $.ajax({
 
-    url: 'teams.json',
+    url: '../json/teams.json',
     async: false,
     dataType: 'json',
     success: function(data){
